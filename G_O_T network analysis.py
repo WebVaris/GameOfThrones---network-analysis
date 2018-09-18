@@ -2,17 +2,16 @@
 import pandas as pd
 
 # Reading in dataset (edges)
-book1 = 'A:/Coding/Data Science/MyProjects/G_O_T/datasets/book1.csv'
-book2 = 'A:/Coding/Data Science/MyProjects/G_O_T/datasets/book2.csv'
-book3 = 'A:/Coding/Data Science/MyProjects/G_O_T/datasets/book3.csv'
-book4 = 'A:/Coding/Data Science/MyProjects/G_O_T/datasets/book4.csv'
-book5 = 'A:/Coding/Data Science/MyProjects/G_O_T/datasets/book5.csv'
+book1 = 'datasets/book1.csv'
+book2 = 'datasets/book2.csv'
+book3 = 'datasets/book3.csv'
+book4 = 'datasets/book4.csv'
+book5 = 'datasets/book5.csv'
 headers = ['Source','Target','Type','weight','book']
 book1_frame = pd.read_csv(book1) 
 
 # Printing out the head of the dataset
 book1_frame.head()
-book1_frame.describe()
 
 # Importing modules
 import networkx as nx
@@ -22,7 +21,7 @@ import matplotlib.pyplot as plt
 # Creating an empty graph object
 G_book1 = nx.Graph()
 
-# Iterating through the DataFrame to add edges
+# Iteration through the DataFrame for book 1 to add edges
 bk1 = [G_book1]
 for _, edge in book1_frame.iterrows():
         G_book1.add_edge(edge['Source'], edge['Target'], weight=edge['weight'])
@@ -38,9 +37,9 @@ for book_fname in book_fnames:
         G_book.add_edge(edge['Source'], edge['Target'], weight=edge['weight'])
     books.append(G_book)
 
-#ap = nv.ArcPlot(G_book1)
-#ap.draw()
-#plt.show()
+ap = nv.ArcPlot(G_book1)
+ap.draw()
+plt.show()
 
 #FINDING MOST IMPORTANT CHARACTER    
 # Calculating the degree centrality of book 1
